@@ -1,39 +1,48 @@
+'use strict'; 
+
 var Marionette = require('backbone.marionette');
 
 var Router = require('./router');
+var MarketLayoutView = require('./views/market-layout-view.js');
 
-var Market = require('./model/market');
-var MarketCollection = require('./model/market_collection');
+//var MarketModel = require('./model/market');
+//var MarketCollection = require('./model/market_collection');
 
-var MarketListView = require('./list/collection_view');
-var MarketDetailView = require('./detail/market_view');
+var VeggieList = require('../../_modules/veggie-list');
+//var MarketDetailView = require('./detail/market_view');
 
 module.exports = Marionette.Object.extend({
     initialize: function(options) {
         this.container = options.container;
+        this.mainLayout = new MarketLayoutView();
 
         this.router = new Router({
             controller: this
         });
 
-        this.marketCollection = new MarketCollection();
+        //this.marketCollection = new MarketCollection();
     },
 
-    startMarketList: function() {
-        var marketListView = new MarketListView({
-            collection: this.groups
-        });
-
-        this.marketCollection.fetch();
-
-        this.container.show(marketListView);
+    showMainLayout: function() {
+        this.container.show(this.mainLayout);
     },
 
-    startMarketItemDetail: function(id) {
-        var marketDetailView = new MarketDetailView({
-            model: this.marketCollection.findWhere({id: id})
+    startVeggieList: function() {
+        var veggieList = new VeggieList({
+            container: this.mainLayout.getRegion('main'),
+            //collection: this.marketCollection
         });
+        this.showMainLayout()
+    },
 
-        this.container.show(marketDetailView);
-    }
+    // startMarketItemDetail: function(id) {
+    //     var marketDetailView = new MarketDetailView({
+    //         //model: this.marketCollection.findWhere({id: id})
+    //     });
+
+    //     this.container.show(marketDetailView);
+
+    //     this.mainLayout.getRegion('main').show(marketDetailView);
+    //     this.showMainLayout()
+    // }
 });

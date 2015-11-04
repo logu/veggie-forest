@@ -6,30 +6,29 @@
 // Libraries
 var Backbone = require('backbone');
 
-// Application level
+// Application
 var Application = require('./app');
-var MainLayout = require('./views/app-layout');
 
-// Subapps 
+// Subapps & high level modules
 var HeaderApp = require('../_modules/header');
+var Market = require('../_subapps/market')
 
+// Application  level
 var app = new Application();
-var layout = new MainLayout();
+var appLayout = app.getAppLayout();
 
 //---------- Adding sub apps 
 
 // Sub app/Header 
-app.addModule('header', HeaderApp, {
-    container: layout.getRegion('header')
+app.addSubApp('header', HeaderApp, {
+    container: appLayout.getRegion('header')
 });
 
 // Sub app/market 
-app.addModule('market', Market, {
-    container: layout.getRegion('main')
+app.addSubApp('market', Market, {
+    container: appLayout.getRegion('main')
 });
 
 app.start();
 
-Backbone.history.start({
-    pushState: true
-});
+Backbone.history.start();

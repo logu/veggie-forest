@@ -1,10 +1,10 @@
 var Marionette = require('backbone.marionette');
-
+var HeaderView = require('./views/header-view.js');
 
 module.exports = Marionette.Object.extend({
     initialize: function(options) {
         this.container = options.container;
-        initHeader();
+        this.initHeader();
     },
 
     initHeader: function() {
