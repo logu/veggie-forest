@@ -3,6 +3,7 @@
 'use strict';
 var path = require('path');
 var pjson = require('./package.json');
+var istanbul = require('browserify-istanbul');
 var config = pjson.config;
 var dirs = config.directories;
 var testFiles = path.join(__dirname, dirs.source, '**/*.test.js');
@@ -31,13 +32,23 @@ var karmaConf = function(config) {
     browserify: {
       debug: true,
       transform: [
-        require('envify')
+        require('envify'),
+        require('hbsfy'),
+        istanbul({
+            ignore: ['**/node_modules/**', '**/test/**'],
+        })
       ]
     },
 
     // test results reporter to use
-    // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
-    reporters: ['progress'],
+    // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage', 'mocha'
+    reporters: ['mocha', 'coverage'],   
+
+    // optionally, configure the reporter 
+    coverageReporter: {
+      type : 'html',
+      dir : 'coverage/'
+    },
 
     // Setup to allow external devices to access karma tests
     // Change to '127.0.0.1' to disallow external access

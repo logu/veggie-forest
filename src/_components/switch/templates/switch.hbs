@@ -1,0 +1,11 @@
+<label class="switch-label">{{text.label}}</label>
+<div class="switch-holder-input">
+    <small>{{text.off}}</small>
+    <input type          = "checkbox"
+           id            = "{{id}}"
+           role          = "checkbox"
+           name          = "{{name}}"
+           {{ disabled }}>
+    <label class="switch {{name}}" for="{{id}}"></label>
+    <small>{{text.on}}</small>
+</div>
