@@ -6,10 +6,7 @@ var VeggieList = require('../index');
 describe('Veggie List View', function() {
 
   beforeEach(function() {
-  	var options = {
-  		container : {}
-  	};
-    this.veggieList = new VeggieList(options);
+    this.veggieList = new VeggieList();
   });
 
   it('Should run a few assertions', function() {

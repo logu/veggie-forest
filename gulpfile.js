@@ -54,7 +54,7 @@ gulp.task('serve', [
 ]);
 
 // Testing
-gulp.task('test', function(done) {
+gulp.task('test', ['eslint'], function(done) {
   new KarmaServer({
     configFile: path.join(__dirname, '/karma.conf.js'),
     singleRun: !args.watch,

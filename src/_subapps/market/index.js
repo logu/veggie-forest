@@ -1,9 +1,10 @@
-'use strict'; 
+'use strict';
 
 var Marionette = require('backbone.marionette');
 
 var Router = require('./router');
 var MarketLayoutView = require('./views/market-layout-view.js');
+var Radio = require('backbone.radio');
 
 //var MarketModel = require('./model/market');
 //var MarketCollection = require('./model/market_collection');
@@ -13,9 +14,8 @@ var VeggieList = require('../../_modules/veggie-list');
 
 module.exports = Marionette.Object.extend({
     initialize: function(options) {
-        this.container = options.container;
         this.mainLayout = new MarketLayoutView();
-
+        this.channel = new Radio.channel('market');
         this.router = new Router({
             controller: this
         });
@@ -28,11 +28,17 @@ module.exports = Marionette.Object.extend({
     },
 
     startVeggieList: function() {
-        var veggieList = new VeggieList({
+       this.veggieList = new VeggieList({
+            parentChannel : this.channel,
             container: this.mainLayout.getRegion('main'),
             //collection: this.marketCollection
         });
-        this.showMainLayout()
+        this.showMainLayout();
+        this.channel.listenTo('veggieList:filtered',this.onVeggieListFiltered);
+    },
+
+    onVeggieListFiltered: function(){
+        this.parentChannel.trigger('market:vegieList:filtered', this.veggieList);
     },
 
     // startMarketItemDetail: function(id) {

@@ -4,7 +4,6 @@ var Marionette = require('backbone.marionette');
 
 module.exports = Marionette.Object.extend({
     initialize: function(options) {
-    	this.container = options.container;
         console.log('LOG: veggie list');
     },
 });
