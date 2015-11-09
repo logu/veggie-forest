@@ -1,0 +1,23 @@
+@import url(http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
+
+html { box-sizing: border-box; }
+*,:before, :after { box-sizing: inherit; }
+
+body {
+  margin: 0;
+  background: #F4F4F6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  height: 100%;
+  font-family:helvetica;
+}
+.main-app{
+  margin-top: 46px;
+  padding: 1em;
+}
+
+// Modules
+
+@import '../_modules/header/sass/header';
+@import '../_modules/cards/sass/cards';
+@import '../_modules/months/sass/months';

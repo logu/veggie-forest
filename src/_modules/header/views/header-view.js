@@ -7,7 +7,9 @@ module.exports = Marionette.ItemView.extend({
 
   template: tpl,
 
-  className: 'navbar',
+  className: 'app-header',
+
+  tagName: 'div',
 
   ui: {
     backButton: 'go-back'
@@ -23,6 +25,12 @@ module.exports = Marionette.ItemView.extend({
 
   return: function() {
     this.trigger('return-back');
+  },
+
+  templateHelpers: {
+    title: function () {
+      return this.options.title;
+    }
   }
 
 });
