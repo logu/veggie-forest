@@ -1,8 +1,9 @@
 var Marionette = require('backbone.marionette');
 
 module.exports = Marionette.AppRouter.extend({
-    appRoutes: {
-        '': 'startCards',
-        'months': 'showMonthList'
-    }
+  appRoutes: {
+    '': 'startCards',
+    'month/:month': 'startCards',
+    'months': 'showMonthList'
+  }
 });

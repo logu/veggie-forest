@@ -7,22 +7,22 @@ var AppLayout = require('./views/app-layout.js');
 var Radio = require('backbone.radio');
 
 module.exports = Marionette.Application.extend({
-    initialize: function() {
-      this._subApp = [];
-      this.appLayout = new AppLayout();
-      this.channel = new Radio.channel('app');
-    },
+  initialize: function() {
+    this._subApp = [];
+    this.appLayout = new AppLayout();
+    this.channel = new Radio.channel('app');
+  },
 
-    addSubApp: function(name, klass ,options) {
-      _.extend(options, {parentChannel: this.channel });
-        var module = new klass(options);
+  addSubApp: function(name, klass ,options) {
+    _.extend(options, {parentChannel: this.channel });
+    var module = new klass(options);
 
-        this._subApp[name] = module;
-    },
+    this._subApp[name] = module;
+  },
 
-    getAppLayout: function() {
-    	return this.appLayout;
-    }
+  getAppLayout: function() {
+    return this.appLayout;
+  }
 });
 
 var mixinTemplateHelpers = function(target) {
@@ -40,7 +40,9 @@ var mixinTemplateHelpers = function(target) {
   _.each(templateHelpers, function(helper, index) {
     if (_.isFunction(helper)) {
       result[index] = helper.call(self);
-    } else {
+    }
+    else
+    {
       result[index] = helper;
     }
   });

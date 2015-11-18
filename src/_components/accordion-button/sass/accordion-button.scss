@@ -1,0 +1,84 @@
+.accordion-button {
+    background: #fff;
+    border-radius: .5em;
+    font-size: 1rem; // TODO : A supprimer
+
+    &[data-state="open"] .accordion-btn {
+        background: hsl(218, 13%, 82%);
+    }
+
+    .accordion-btn {
+        background: #fff;
+        border-radius: .5em;
+        color: hsl(218, 56%, 39%);
+        display: table;
+        font-size: 1em;
+        padding: 1em;
+        width: 100%;
+
+        &:active {
+            background: hsl(218, 20%, 73%);
+            color: #fff;
+        }
+
+        &>div {
+            display: table-cell;
+            vertical-align: middle;
+
+            &:first-child {
+                padding: 0 1em;
+            }
+
+            &>p {
+                line-height: 1;
+                margin: 0;
+                text-align: left;
+            }
+        }
+
+        .icon {
+            background: #f6f6f6;
+            border-radius: 50%;
+            box-shadow: 0 3px 3px 0px rgba(0, 0, 0, .1) inset;
+            color: hsl(218, 56%, 39%);
+            display: block;
+            position: relative;
+            width: 4em;
+            height: 4em;
+
+            &::before {
+                font-size: 2em;
+                line-height: 2;
+            }
+        }
+
+        .title {
+            font-size: 1.5em;
+        }
+
+        .subtitle {
+            font-size: 1em;
+            font-style: italic;
+            margin-top: .25em;
+        }
+    }
+
+    .content {
+        margin: 1em 1em 0;
+        padding-bottom: 1em;
+
+        &>* {
+            margin-bottom: 1em;
+            background: rgba(0, 0, 0, .1); // TODO : A supprimer
+            height: 5em; // TODO : A supprimer
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    &[data-state="close"] .content {
+        display: none;
+    }
+}

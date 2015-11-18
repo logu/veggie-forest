@@ -18,9 +18,8 @@ module.exports = Marionette.CompositeView.extend({
   childViewContainer: '[data-region="months-list"]',
 
   onRenderCollection: function() {
-    var theScroll;
     function scroll() {
-      theScroll = new iScroll('wrapper');
+      new iScroll('wrapper');
     }
     document.addEventListener('DOMContentLoaded', scroll, false);
   },
