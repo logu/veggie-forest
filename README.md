@@ -55,53 +55,10 @@ This starter kit includes a build system by which source can be linted, tested a
 
 ### Directory structure
 
-The root directory generated for the app :
+The root directory for the app :
+TODO : update the directory tree 
 <pre>
 ├──  veggie-forest/
-│   ├──  app/
-│   │   ├──  images/
-│   │   ├──  data/
-│   │   ├──  scripts/
-│   │   │   ├── components/
-|   |   |   |   └── scripts for objects/modules
-│   │   │   ├── modules/
-|   |   |   |   └── scripts for pages/modules of a page
-│   │   │   ├── views/
-|   |   |   |   └── scripts for views in your page
-|   |   |   └── main.js (main file js)
-│   │   ├──  styles/
-|   |   |   ├── base
-|   |   |   |   └── variables, resets, mixins, global assets like fonts
-|   |   |   ├── elements
-|   |   |   |   └── styles for base elements (p, ul, img etc.)
-|   |   |   ├── layout
-|   |   |   |   └── grids, widths, utilities, etc.
-|   |   |   ├── modules
-|   |   |   |   └── styles for objects/modules (.sg-grid etc.)
-|   |   |   ├── components
-|   |   |   |   └── styles for objects/components
-|   |   |   ├── views
-|   |   |   |   └── styles for pages/page modules (.homepage etc.)
-|   |   |   ├── main.less (the manifest file that pulls in all the partials and compiles into main.css)
-│   │   │   └──  vendor.less (the manifest file that pulls in all the vendor styles and compiles into vendor.css)
-│   │   ├──  404.html
-│   │   ├──  favicon.ico
-│   │   └──  index.html
-│   ├──  doc/
-│   ├──  gulp/
-│   │   ├──  build.js
-│   │   ├──  e2e-tests.js
-│   │   ├──  server.js
-│   │   ├──  unit-tests.js
-│   │   ├──  watch.js
-│   │   └──  wiredep.js
-│   ├──  .bowerrc
-│   ├──  .editorconfig
-│   ├──  .gitignore
-│   ├──  .jshintrc
-│   ├──  bower.json
-│   ├──  gulpfile.json
-│   └──  README.md
 </pre>
 
 
