@@ -3,8 +3,10 @@
 var Marionette = require('backbone.marionette');
 var Backbone = require('backbone');
 var Router = require('./router');
-var MarketLayoutView = require('./views/market-layout-view.js');
+var MarketLayoutView = require('./views/market-layout-view');
 var Radio = require('backbone.radio');
+
+var VeggiesCollection = require('../../_entities/veggies/veggies-collection');
 
 //var MarketModel = require('./model/market');
 //var MarketCollection = require('./model/market_collection');
@@ -22,6 +24,7 @@ module.exports = Marionette.Object.extend({
       controller: this
     });
     this.showMainLayout();
+    this.veggiesColection = new VeggiesCollection();
     //this.marketCollection = new MarketCollection();
   },
 
@@ -34,13 +37,14 @@ module.exports = Marionette.Object.extend({
     this.cards = new Cards({
       parentChannel : this.channel,
       container: this.mainLayout.getRegion('main'),
-      collection: new Backbone.Collection([
-        {name: 'apple'},
-        {name: 'orange'}
-      ])
-      //collection: this.marketCollection
+      collection: this.veggiesColection
     });
     this.listenTo(this.channel, 'cards:addToList',this.onCardsAddToList);
+    this.veggiesColection.fetch({
+      success: function(){
+        console.log('ok')
+      }
+    });
   },
 
   showMonthList: function() {

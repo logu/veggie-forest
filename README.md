@@ -1,4 +1,4 @@
-# Veggie-Forest.
+# MStudio architecture.
 
 ## Basic Starter
 
@@ -55,8 +55,7 @@ This starter kit includes a build system by which source can be linted, tested a
 
 ### Directory structure
 
-The root directory for the app :
-TODO : update the directory tree 
+The root directory generated for the app :
 <pre>
 ├──  veggie-forest/
 </pre>

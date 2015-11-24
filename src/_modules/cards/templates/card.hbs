@@ -1,17 +1,15 @@
-<div class="inner-wrap">
-    <a class="title" href="#">{{name}}</a>
-    <p>Description</p>
+<div class="card_image">
+    <img src="{{image}}"
+         alt="" class="image">
+    <i class="material-icons favorite">
+        favorite_border</i>
 </div>
-<div class="action-bar">
-    <ul>
-        <li class="comments">
-            <a href="#"><i class="fa fa-plus-square-o"></i> <span class="comments-link">Add to list</span></a>
-        </li>
-        <li class="share">
-            <a href="#"><i class="fa fa-cutlery"></i></i><span>share</span></a>
-        </li>
-        <li class="like">
-            <a href="#"><i class="fa fa-heart-o"></i><span>like</span></a>
-        </li>
-    </ul>
+<div class="cardContent">
+    <button class="cardContentButton"><i class="material-icons">add</i></button>
+    <p class="cardContentName">{{name}}</p>
+
+    <p class="cardContentJob">{{type}}</p>
+    <div class="cardMenu">
+      <div class="titleSocial">Ajouter à la liste</div>
+    </div>
 </div>

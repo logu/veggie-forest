@@ -16,8 +16,13 @@ body {
   padding: 1em;
 }
 
+// Mixins
+@import './mixins/depth';
+@import './mixins/variables';
+
 // Modules
 
 @import '../_modules/header/sass/header';
 @import '../_modules/cards/sass/cards';
+@import '../_modules/cards/sass/empty';
 @import '../_modules/months/sass/months';

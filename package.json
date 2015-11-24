@@ -77,6 +77,7 @@
       "destination": "build",
       "temporary": "tmp",
       "//": "Directories relative to `source` directory",
+      "entities": "_entities",
       "modules": "_modules",
       "components": "_components",
       "layouts": "_layouts",
