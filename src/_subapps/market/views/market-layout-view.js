@@ -9,6 +9,7 @@ module.exports = Marionette.LayoutView.extend({
 
   regions: {
     header: '[data-region="header"]',
+    toolbar: '[data-region="toolBar"]',
     main: '[data-region="main"]',
     footer: '[data-region="footer"]'
   }

@@ -12,7 +12,9 @@ module.exports = Marionette.ItemView.extend({
   className: 'card',
 
   ui: {
-    'favorite': '.cardContentButton'
+    'favorite': '.cardContentButton',
+    'favoritIcon': '.cardContentButton i',
+    'cardImage': '.card_image'
   },
 
   events:{
@@ -23,16 +25,10 @@ module.exports = Marionette.ItemView.extend({
     this.$el.addClass('with-badge');
   },
 
-  onRender: function(){
-    console.log('my model is', this.model)
-  },
-
   onFavoritClick: function(){
-    this.$('.cardContentButton').addClass('is-active');
-    this.$('.card_image').addClass('is-active');
-    this.$('.cardContentButton i').addClass('is-active');
-    this.$('.menuSocial').addClass('is-active');
-    this.$('.menuSocialItem').addClass('is-active');
+    this.ui.favorite.addClass('is-active');
+    this.ui.cardImage.addClass('is-active');
+    this.ui.favoritIcon.addClass('is-active');
     this.$('.titleSocial').addClass('is-active');
   }
 

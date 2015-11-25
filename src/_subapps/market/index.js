@@ -12,6 +12,7 @@ var VeggiesCollection = require('../../_entities/veggies/veggies-collection');
 //var MarketCollection = require('./model/market_collection');
 
 var Cards = require('../../_modules/cards');
+var Search = require('../../_modules/search');
 var Months = require('../../_modules/months');
 
 module.exports = Marionette.Object.extend({
@@ -33,39 +34,25 @@ module.exports = Marionette.Object.extend({
   },
 
   startCards: function(month) {
-    this.cardsCollection = this.parentChannel
+
+    this.cardsCollection = this.parentChannel;
     this.cards = new Cards({
       parentChannel : this.channel,
       container: this.mainLayout.getRegion('main'),
       collection: this.veggiesColection
     });
+
+    this.search = new Search({
+      parentChannel : this.channel,
+      container: this.mainLayout.getRegion('toolbar'),
+      collection: this.veggiesColection
+    });
+
     this.listenTo(this.channel, 'cards:addToList',this.onCardsAddToList);
     this.veggiesColection.fetch({
       success: function(){
         console.log('ok')
       }
-    });
-  },
-
-  showMonthList: function() {
-    this.months = new Months({
-      parentChannel : this.channel,
-      container: this.mainLayout.getRegion('main'),
-      collection: new Backbone.Collection([
-        {month:'January'},
-        {month:'February'},
-        {month:'March'},
-        {month:'April'},
-        {month:'May'},
-        {month:'June'},
-        {month:'July'},
-        {month:'August'},
-        {month:'September'},
-        {month:'October'},
-        {month:'November'},
-        {month:'December'},
-      ]),
-      //collection: this.marketCollection
     });
   },
 

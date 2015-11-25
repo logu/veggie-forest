@@ -1,3 +1,20 @@
 $keyBreakpoint: 37.5em;
-$colorButton: #deb500;
-$colorButtonLigther: #E4D077;
+
+$primary-color: #0277BD !default;
+$primary-color-light: false !default;
+$primary-color-dark: false !default;
+@if not $primary-color-light {
+  $primary-color-light: lighten(#0277BD, 15%);
+}
+@if not $primary-color-dark {
+  $primary-color-dark: darken(#0277BD, 15%);
+}
+$secondary-color: #29B6F6 !default;
+$success-color: #9CCC65 !default;
+$error-color: #FF7043 !default;
+
+$link-color: #1E88E5 !default;
+
+
+$colorButton: $primary-color;
+$colorButtonLigther: $primary-color-light;

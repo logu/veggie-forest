@@ -1,17 +1,17 @@
 'use strict';
 
 var Marionette = require('backbone.marionette');
-var HeaderView = require('./views/header-view');
+var SearchView = require('./views/search-view');
 
 module.exports = Marionette.Object.extend({
   initialize: function(options) {
     this.container = options.container;
-    this.initHeader(options);
+    this.initSearch(options);
   },
 
-  initHeader: function(options) {
-    var headerView = new HeaderView(options);
-    this.container.show(headerView);
+  initSearch: function(options) {
+    var searchView = new SearchView(options);
+    this.container.show(searchView);
   }
 });
 

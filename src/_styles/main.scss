@@ -12,8 +12,7 @@ body {
   font-family:helvetica;
 }
 .main-app{
-  margin-top: 46px;
-  padding: 1em;
+  margin-top: 45px;
 }
 
 // Mixins
@@ -23,6 +22,12 @@ body {
 // Modules
 
 @import '../_modules/header/sass/header';
+@import '../_modules/search/sass/search';
 @import '../_modules/cards/sass/cards';
 @import '../_modules/cards/sass/empty';
 @import '../_modules/months/sass/months';
+
+// Sub app
+
+@import '../_subapps/market/sass/market';
+
