@@ -10,6 +10,7 @@ input[type="search"] {
   font-weight: 300;
   font-size: 40px;
   color: #555;
+  @include respond-to(Smartphones) { width: 100% ;}
 }
 
 .Search-box {

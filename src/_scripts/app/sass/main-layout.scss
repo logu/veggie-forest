@@ -1,0 +1,83 @@
+.main-app{
+  padding-top: 45px;
+}
+
+.panel,
+.main-panel {
+  vertical-align: top;
+  max-height: 100vh;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+/* -- panel style ------------------------------- */
+.panel {
+  position: relative;
+  display: block;
+  min-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: none;
+  transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.panel:before,
+.panel:after {
+  content: " ";
+  display: table;
+}
+
+.panel:after {
+  clear: both;
+}
+
+.panel {
+  background-color: #fff;
+  width: 0;
+  transform: translate3d(-100vw, 0, 0);
+}
+
+.panel.open {
+  min-width: 100vw;
+  width: 100vw;
+  transform: translate3d(0, 0, 0);
+}
+
+.panel-fixed-left,
+.panel-fixed-right,
+.panel-fixed-down{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  z-index: 1035;
+}
+
+.panel-fixed-left {
+  left: 0;
+}
+
+.panel-fixed-right {
+  right: 0;
+  transform: translate3d(100vw, 0, 0);
+}
+
+.panel-fixed-right.open {
+  transform: translate3d(0, 0, 0);
+}
+
+.panel-fixed-down {
+  min-width: 100vw;
+  height: 0;
+  bottom: 0;
+  transform: translate3d(0, 100vh, 0);
+}
+
+.panel-fixed-down.open {
+  min-height: 100vh;
+  height: 100vh;
+  transform: translate3d(0, 0, 0);
+}
+
+.no-scroll{
+  overflow: hidden;
+}

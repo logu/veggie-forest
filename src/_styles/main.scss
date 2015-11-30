@@ -1,23 +1,13 @@
-@import url(http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
-
-html { box-sizing: border-box; }
-*,:before, :after { box-sizing: inherit; }
-
-body {
-  margin: 0;
-  background: #F4F4F6;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  height: 100%;
-  font-family:helvetica;
-}
-.main-app{
-  margin-top: 45px;
-}
+// Base
+@import './base/base';
 
 // Mixins
+@import './mixins/mediaquery';
 @import './mixins/depth';
 @import './mixins/variables';
+
+// App
+@import '../_scripts/app/sass/main-layout';
 
 // Modules
 
