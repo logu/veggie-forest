@@ -51,7 +51,7 @@ module.exports = Marionette.Object.extend({
     this.listenTo(this.channel, 'cards:addToList',this.onCardsAddToList);
     this.veggiesColection.fetch({
       success: function(){
-        console.log('ok')
+        console.log('ok market')
       }
     });
   },

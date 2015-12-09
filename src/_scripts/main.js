@@ -12,6 +12,7 @@ var Application = require('./app');
 // Subapps & high level modules
 var HeaderApp = require('../_modules/header');
 var Market = require('../_subapps/market');
+var Cantine = require('../_subapps/cantine');
 
 // Application  level
 var app = new Application();
@@ -27,6 +28,11 @@ app.addSubApp('header', HeaderApp, {
 
 // Sub app/market
 app.addSubApp('market', Market, {
+  container: appLayout.getRegion('main')
+});
+
+// Sub app/cantine
+app.addSubApp('cantine', Cantine, {
   container: appLayout.getRegion('main')
 });
 
