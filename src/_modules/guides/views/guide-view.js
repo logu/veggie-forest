@@ -5,11 +5,11 @@ var tpl = require('../templates/guide.hbs');
 
 module.exports = Marionette.ItemView.extend({
 
-  tagName: 'article',
+  tagName: 'li',
 
   template: tpl,
 
-  className: 'guide',
+  className: 'list-item',
 
   ui: {
     // 'favorite': '.cardContentButton',

@@ -9,7 +9,7 @@ module.exports = Marionette.CollectionView.extend({
 
   className: 'guides',
 
-  tagName: 'section',
+  tagName: 'ul',
 
   childView: GuideView,
 
