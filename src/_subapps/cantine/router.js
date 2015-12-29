@@ -2,6 +2,7 @@ var Marionette = require('backbone.marionette');
 
 module.exports = Marionette.AppRouter.extend({
   appRoutes: {
-    'cantine': 'getCantine'
+    'cantine': 'getListResto',
+    'cantine-fiche-resto': 'getFicheResto'
   }
 });

@@ -11,9 +11,12 @@ module.exports = Marionette.CollectionView.extend({
 
   tagName: 'ul',
 
+  onChildviewNavigateFicheResto: function(e) {
+  	this.trigger('clicked', e.model);
+  },
+
   childView: GuideView,
 
   emptyView: EmptyView
-
 
 });

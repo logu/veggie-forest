@@ -3,55 +3,116 @@
 var Marionette = require('backbone.marionette');
 var Backbone = require('backbone');
 var Router = require('./router');
-var CantineLayoutView = require('./views/cantine-layout-view');
 var Radio = require('backbone.radio');
+var _ = require('lodash');
 
 var RestaurantsCollection = require('../../_entities/restaurants/restaurants-collection');
 
-//var MarketModel = require('./model/market');
-//var MarketCollection = require('./model/market_collection');
+var CantineLayoutView = require('./views/cantine-layout-view');
 
+//Modules
 var Guides = require('../../_modules/guides');
-// var Search = require('../../_modules/search');
+
+//Pages
+var ListResto = require('./pages/list-resto');
+var FicheResto = require('./pages/fiche-resto');
 
 module.exports = Marionette.Object.extend({
 
   initialize: function(options) {
     this.container = options.container;
     this.mainLayout = new CantineLayoutView();
-    // this.channel = new Radio.channel('cantine');
+    this.channel = new Radio.channel('cantine');
     this.router = new Router({
       controller: this
     });
     this.showMainLayout();
     this.restaurantsCollection = new RestaurantsCollection();
+    this.listenChannel();
   },
 
   showMainLayout: function() {
     this.container.show(this.mainLayout);
   },
 
-  getCantine: function() {
+  listenChannel: function(){
+    // Navigation event
+    this.channel.on('navigate:getFicheResto', _.bind(this.navigateGetFicheResto, this));
+  },
 
-    this.guides = new Guides({
-      container: this.mainLayout.getRegion('main'),
-      collection: this.restaurantsCollection
+  // ROUTED PAGES ====================
+
+    // Display Liste restaurants
+  // getCantine: function() {
+
+  //   this.guides = new Guides({
+  //     container: this.mainLayout.getRegion('cantineMain'),
+  //     collection: this.restaurantsCollection
+  //   });
+
+  //   this.restaurantsCollection.fetch({
+  //     success: function(){
+  //       console.log('OK cantine');
+  //     }
+  //   });
+  // },
+
+  getListResto: function() {
+    // On appelle la page list-resto
+    console.log('OK DOKI cantine');
+    this.showPage(ListResto, {});
+    this.animateRegion();
+  },
+
+  getFicheResto: function() {
+
+    // On appelle la page fiche-resto
+    this.showPage(FicheResto, {
+      model : this.ficheModel
     });
 
-    /*
-    this.search = new Search({
+  },
+
+  showPage: function(Page, options) {
+
+    console.log('options', options);
+
+    // Reset region and container
+    this.resetRegions();
+
+    var page = new Page({
+
+      container : this.mainLayout.getRegion('cantineMain'),
       parentChannel : this.channel,
-      container: this.mainLayout.getRegion('toolbar'),
-      collection: this.restaurantsCollection
+      model: options.model,
+      scriptId : options.scriptId,
+      isToSave : options.isToSave
     });
-    */
+  },
 
-    // this.listenTo(this.channel, 'guides:addToList',this.onGuidesAddToList);
-    this.restaurantsCollection.fetch({
-      success: function(){
-        console.log('Good cantine');
-      }
+  resetRegions: function() {
+    var regions = this.mainLayout.getRegions();
+    var keys = Object.keys(regions);
+    for (var i=0; i<keys.length; i++) {
+      this.mainLayout.getRegion(keys[i]).reset();
+    }
+  },
+
+  animateRegion: function(){
+    this.mainLayout.getRegion('cantineMain').on('show',function(){
+      this.$el.parent().parent().addClass('open');
     });
+    this.mainLayout.getRegion('cantineMain').on('close',function(){
+      this.$el.parent().parent().removeClass('open');
+    });
+  },
+
+  // NAVIGATION METHODS ==================
+
+  navigateGetFicheResto: function(model) {
+    console.log('model =' + model);
+    this.ficheModel = model;
+    this.router.navigate('cantine-fiche-resto', { trigger: true});
   },
 
 

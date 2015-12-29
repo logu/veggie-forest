@@ -8,6 +8,7 @@ module.exports = Marionette.LayoutView.extend({
   },
 
   regions: {
-    main: '[data-region="cantine-main"]'
+    cantineMain: '[data-region="cantine-main"]'
   }
+  
 });

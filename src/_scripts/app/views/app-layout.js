@@ -19,11 +19,11 @@ module.exports = Marionette.LayoutView.extend({
 
   animateRegion: function(){
     this.getRegion('bottomPanel').on('show',function(){
-      this.$el.addClass('open');
+      //this.$el.addClass('open');
     });
 
     this.getRegion('bottomPanel').on('close',function(){
-      this.$el.removeClass('open');
+      //this.$el.removeClass('open');
     });  
 
     this.getRegion('main').on('show',function(){

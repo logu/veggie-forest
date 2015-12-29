@@ -33,7 +33,7 @@ app.addSubApp('market', Market, {
 
 // Sub app/cantine
 app.addSubApp('cantine', Cantine, {
-  container: appLayout.getRegion('main')
+  container: appLayout.getRegion('bottomPanel')
 });
 
 

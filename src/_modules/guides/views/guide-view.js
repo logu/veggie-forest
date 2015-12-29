@@ -2,6 +2,7 @@
 
 var Marionette = require('backbone.marionette');
 var tpl = require('../templates/guide.hbs');
+var $ = require('jquery');
 
 module.exports = Marionette.ItemView.extend({
 
@@ -11,25 +12,8 @@ module.exports = Marionette.ItemView.extend({
 
   className: 'list-item',
 
-  ui: {
-    // 'favorite': '.cardContentButton',
-    // 'favoritIcon': '.cardContentButton i',
-    // 'cardImage': '.card_image'
-  },
-
-  events:{
-    // 'click @ui.favorite' : 'onFavoritClick'
-  },
-
-  setBadge: function() {
-    // this.$el.addClass('with-badge');
-  },
-
-  onFavoritClick: function(){
-    this.ui.favorite.addClass('is-active');
-    this.ui.cardImage.addClass('is-active');
-    this.ui.favoritIcon.addClass('is-active');
-    this.$('.titleSocial').addClass('is-active');
+  triggers: {
+    'click a': 'navigate:ficheResto',
   }
 
 });
