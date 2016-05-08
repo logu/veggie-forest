@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Veggie-forest by logu</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Veggie-forest</h1>
+        <p>Veggie forest: découvrez vos fruits et légumes</p>
+
+        <p class="view"><a href="https://github.com/logu/veggie-forest">View the Project on GitHub <small>logu/veggie-forest</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/logu/veggie-forest/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/logu/veggie-forest/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/logu/veggie-forest">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p>Overall, the project had a lot of turnover and doesn't had a proper architecture. And there are several teams working on the same codebase. So, the final result is an application which is hardly maintainable and which may produce bugs for each modifications.</p>
+
+<p>The purpose of this study is to look for a way to find an ideal architecture for a large scale web app that makes heavy use of REST API.
+It will try to bring to the codebase an application level structure by applying a structural pattern and a bunch of behavioral patterns to help structure the business logic. </p>
+
+<p>There is no questions about JavaScript MVC architectures, they are standard when creating large scale web app. MVC only helps to separate reponsibilities of a low level logics. It provides a separation between the data and visualization, but it doesn't have a concept for coordination among an application's modules.</p>
+
+<h1>
+<a id="environment--technical-stack" class="anchor" href="#environment--technical-stack" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Environment / technical stack</h1>
+
+<h3>
+<a id="javascript-libraries" class="anchor" href="#javascript-libraries" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Javascript libraries</h3>
+
+<ul>
+<li>MV* library <code>Backbone</code> </li>
+<li>A collection of common design pattern applied with Backbone: <code>Marionette</code> </li>
+</ul>
+
+<h3>
+<a id="dependencies-management" class="anchor" href="#dependencies-management" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dependencies management:</h3>
+
+<ul>
+<li>Package manager: <code>npm</code>
+</li>
+<li>Dependency manager: <code>browserify</code>
+</li>
+</ul>
+
+<h3>
+<a id="build-system" class="anchor" href="#build-system" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Build system</h3>
+
+<ul>
+<li>Tasker: <code>gulp</code>
+</li>
+</ul>
+
+<h3>
+<a id="test" class="anchor" href="#test" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Test</h3>
+
+<ul>
+<li>Test runner: <code>Karma</code>
+</li>
+<li>Test framework: <code>Mocha</code>
+</li>
+<li>Assertion library: <code>Chai</code>
+</li>
+<li>Test spies, stubs and mocks: <code>SinonJS</code>
+</li>
+<li>Code coverage: <code>Istanbul</code>
+</li>
+</ul>
+
+<h1>
+<a id="structural-level" class="anchor" href="#structural-level" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Structural level</h1>
+
+<p>As the application get larger and larger, it’s important to decouple the various functional areas. Decoupling them allows a greater flexibility by letting each functional chunk to be changed, without affecting the other areas. This is where structural patterns play a critical role. The structural patterns are concerned with how classes and objects are composed to form larger structures. 
+There are quite a few (Adapter, Bridge, Composite, Decorator, Facade, Flyweight, Proxy)</p>
+
+<p><strong>The composite architecture seems to fit the best with the chosen technical stack.</strong></p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/1543609/11334585/52dfcac2-91d6-11e5-8518-bf6b5837dbed.png" alt="Global architecture"></p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/logu">logu</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
