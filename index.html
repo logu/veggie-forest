@@ -89,6 +89,104 @@ There are quite a few (Adapter, Bridge, Composite, Decorator, Facade, Flyweight,
 <p><strong>The composite architecture seems to fit the best with the chosen technical stack.</strong></p>
 
 <p><img src="https://cloud.githubusercontent.com/assets/1543609/11334585/52dfcac2-91d6-11e5-8518-bf6b5837dbed.png" alt="Global architecture"></p>
+
+<hr>
+
+<h1>
+<a id="app" class="anchor" href="#app" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>App</h1>
+
+<ul>
+<li>Manage the sub applications</li>
+<li>Plays the role of mediator for those sub applications</li>
+<li>Has a layout to enable the use of modules common to multiple sub applications</li>
+<li>Has access to the entities (data manager)</li>
+<li>Has access to the services (singleton modules providing common functionalities which doesn’t rely on instantiated classes)</li>
+<li>Communicates with its sub applications through the application channel</li>
+</ul>
+
+<hr>
+
+<h1>
+<a id="subapp" class="anchor" href="#subapp" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Subapp</h1>
+
+<h2>
+<a id="description" class="anchor" href="#description" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Description</h2>
+
+<p>Each subapp manage its modules and plays the role of mediator for those modules, it communicates with the application through the application channel and with its modules through it’s own subapp channel. It has its own router which will help to navigate between pages.</p>
+
+<p>The entry point of the subapp is index.js (sandbox). 
+The subapp is build using pages which most of the time is linked to a screen of the app.
+The navigation between pages of the subapp is insured by attached router.</p>
+
+<h2>
+<a id="file-structure" class="anchor" href="#file-structure" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>File structure</h2>
+
+<p>An example <code>subapp</code> subapp :</p>
+
+<pre><code>└── subapp
+    ├── pages
+    | └── subapp-home.js
+    ├── sass
+    | └── subapp.scss
+    ├── templates
+    | └── subapp-layout.hbs
+    | └── subapp-home-layout.hbs
+    ├── views
+    | └── subapp-layout-view.js
+    ├── index.js
+    └── router.js
+</code></pre>
+
+<h3>
+<a id="pages" class="anchor" href="#pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Pages</h3>
+
+<p>Usually used to display a screen of the app,
+a page could include one or several Modules.</p>
+
+<p>To initialize a page :</p>
+
+<pre><code>var Marionette = require('backbone.marionette');
+
+// List of the Modules used in the page
+var Example = require('../_modules/example-name');
+
+// A Page is associate to a View Layout
+var ExampeLayout = require('../views/example-name-layout-view');
+
+module.exports = Marionette.Object.extend({
+
+  initialize: function(options) {
+    // container, layout and parentChannel are initialized in the parent
+    this.container = options.container;
+    this.layout = new ExampeLayout();
+    this.container.show(this.layout);    
+    this.parentChannel = options.parentChannel;
+
+    // Initializing data
+    this.initData();
+    // Initializing modules (using previously initialized data)
+    this.initModules();
+    // Fetch data
+    this.fetchData();
+  }
+
+});
+</code></pre>
+
+<h3>
+<a id="sass" class="anchor" href="#sass" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sass</h3>
+
+<p>All the styles needed for the subapp.</p>
+
+<h3>
+<a id="templates" class="anchor" href="#templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Templates</h3>
+
+<p>All the templates needed for the layouts.</p>
+
+<h3>
+<a id="views" class="anchor" href="#views" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Views</h3>
+
+<p>Most of the time it will be a layout-view to be able to structure the subapp or the pages.</p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/logu">logu</a></p>
